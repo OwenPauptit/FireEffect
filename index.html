@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <style>
+
+        </style>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script src="js/fire.js"></script>
+        <script>
+
+            let fire;
+            let pixelSize = 4;
+
+            window.onload = function()
+            {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+
+                fire = new Fire(canvas.width, canvas.height, pixelSize);
+                //console.log("here");
+                //ripple.draw(ctx);
+                //update();
+
+                /*document.addEventListener("mousedown", () => {
+                let x = Math.floor(event.clientX / pixelSize); // Gets Mouse X
+                let y = Math.floor(event.clientY / pixelSize); // Gets Mouse Y
+                fire.buffer2[x][y] = 2500;
+                });*/
+                var loop = setInterval(update, 1000/30);
+                //fire.fire();
+            }
+
+            update = function()
+            {
+                if (Math.random() < 0.2)
+                {
+                    fire.fire();
+                }
+                fire.draw(ctx);
+
+            }
+        </script>
+    </body>
+</html>
